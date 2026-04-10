@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>EduShare — Student Resource Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/marketplace.css" />
+  <link rel="stylesheet" href="css/advice.css" />
+  <link rel="stylesheet" href="css/profile.css" />
+  <link rel="stylesheet" href="css/auth.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+</head>
+<body>
+  <!-- Toast Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Auth Screen -->
+  <div id="auth-screen" class="auth-screen">
+    <div class="auth-bg-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+    </div>
+    <div class="auth-card">
+      <div class="auth-logo">
+        <div class="logo-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <path d="M4 8C4 5.79086 5.79086 4 8 4H20C22.2091 4 24 5.79086 24 8V16C24 18.2091 22.2091 20 20 20H16L12 24L8 20H8C5.79086 20 4 18.2091 4 16V8Z" fill="currentColor"/>
+            <circle cx="9.5" cy="12" r="1.5" fill="white"/>
+            <circle cx="14" cy="12" r="1.5" fill="white"/>
+            <circle cx="18.5" cy="12" r="1.5" fill="white"/>
+          </svg>
+        </div>
+        <span class="logo-text">EduShare</span>
+      </div>
+      <div class="auth-tabs">
+        <button class="auth-tab active" data-tab="login">Sign In</button>
+        <button class="auth-tab" data-tab="signup">Sign Up</button>
+      </div>
+
+      <!-- Login Form -->
+      <div id="login-form" class="auth-form active">
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" id="login-email" class="form-input" placeholder="you@university.edu" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <input type="password" id="login-password" class="form-input" placeholder="••••••••" />
+        </div>
+        <button id="login-btn" class="btn btn-primary btn-full">
+          <span class="btn-text">Sign In</span>
+          <span class="btn-spinner hidden"></span>
+        </button>
+      </div>
+
+      <!-- Signup Form -->
+      <div id="signup-form" class="auth-form">
+        <div class="form-group">
+          <label class="form-label">Full Name</label>
+          <input type="text" id="signup-name" class="form-input" placeholder="Alex Johnson" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" id="signup-email" class="form-input" placeholder="you@university.edu" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <input type="password" id="signup-password" class="form-input" placeholder="Min. 6 characters" />
+        </div>
+        <button id="signup-btn" class="btn btn-primary btn-full">
+          <span class="btn-text">Create Account</span>
+          <span class="btn-spinner hidden"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- App Shell (shown after auth) -->
+  <div id="app-shell" class="app-shell hidden">
+
+    <!-- Top Nav (Desktop) -->
+    <header class="top-nav" id="top-nav">
+      <div class="top-nav-inner">
+        <div class="nav-logo">
+          <div class="logo-icon sm">
+            <svg width="20" height="20" viewBox="0 0 28 28" fill="none">
+              <path d="M4 8C4 5.79086 5.79086 4 8 4H20C22.2091 4 24 5.79086 24 8V16C24 18.2091 22.2091 20 20 20H16L12 24L8 20H8C5.79086 20 4 18.2091 4 16V8Z" fill="currentColor"/>
+              <circle cx="9.5" cy="12" r="1.5" fill="white"/>
+              <circle cx="14" cy="12" r="1.5" fill="white"/>
+              <circle cx="18.5" cy="12" r="1.5" fill="white"/>
+            </svg>
+          </div>
+          <span>EduShare</span>
+        </div>
+        <nav class="desktop-nav">
+          <button class="nav-item active" data-page="marketplace">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+            Marketplace
+          </button>
+          <button class="nav-item" data-page="advice">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            Advice
+          </button>
+          <button class="nav-item" data-page="profile">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            Profile
+          </button>
+        </nav>
+        <button id="logout-btn-desktop" class="btn btn-ghost btn-sm">Logout</button>
+      </div>
+    </header>
+
+    <!-- Page Container -->
+    <main class="page-container">
+
+      <!-- Marketplace Page -->
+      <div id="marketplace-page" class="page active">
+        <div class="page-header">
+          <h1 class="page-title">Marketplace</h1>
+          <button class="btn btn-primary btn-sm" id="add-item-btn-desktop">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Add Item
+          </button>
+        </div>
+
+        <!-- Search + Filters -->
+        <div class="search-filter-bar">
+          <div class="search-wrap">
+            <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="search-input" class="search-input" placeholder="Search books, notes, equipment…" />
+          </div>
+          <div class="filter-chips" id="filter-chips">
+            <button class="chip active" data-filter="all">All</button>
+            <button class="chip" data-filter="Books">Books</button>
+            <button class="chip" data-filter="Notes">Notes</button>
+            <button class="chip" data-filter="Equipment">Equipment</button>
+            <button class="chip" data-filter="Software">Software</button>
+            <button class="chip" data-filter="Other">Other</button>
+          </div>
+        </div>
+
+        <!-- Items Grid -->
+        <div id="items-grid" class="items-grid">
+          <!-- Skeleton placeholders -->
+          <div class="item-card skeleton"></div>
+          <div class="item-card skeleton"></div>
+          <div class="item-card skeleton"></div>
+          <div class="item-card skeleton"></div>
+        </div>
+        <div id="items-empty" class="empty-state hidden">
+          <div class="empty-icon">📚</div>
+          <p class="empty-title">No items yet</p>
+          <p class="empty-sub">Be the first to list something!</p>
+        </div>
+      </div>
+
+      <!-- Advice Feed Page -->
+      <div id="advice-page" class="page">
+        <div class="page-header">
+          <h1 class="page-title">Advice Feed</h1>
+          <button class="btn btn-primary btn-sm" id="add-post-btn-desktop">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Post
+          </button>
+        </div>
+
+        <!-- Category filter for advice -->
+        <div class="filter-chips advice-filter" id="advice-filter-chips">
+          <button class="chip active" data-filter="all">All</button>
+          <button class="chip" data-filter="Academics">Academics</button>
+          <button class="chip" data-filter="Career">Career</button>
+          <button class="chip" data-filter="Campus Life">Campus Life</button>
+          <button class="chip" data-filter="Mental Health">Mental Health</button>
+          <button class="chip" data-filter="Finance">Finance</button>
+        </div>
+
+        <!-- Post Feed -->
+        <div id="posts-feed" class="posts-feed">
+          <div class="post-card skeleton tall"></div>
+          <div class="post-card skeleton tall"></div>
+          <div class="post-card skeleton tall"></div>
+        </div>
+        <div id="posts-empty" class="empty-state hidden">
+          <div class="empty-icon">💬</div>
+          <p class="empty-title">No posts yet</p>
+          <p class="empty-sub">Share your wisdom!</p>
+        </div>
+      </div>
+
+      <!-- Profile Page -->
+      <div id="profile-page" class="page">
+        <div class="profile-header-card">
+          <div class="profile-avatar" id="profile-avatar">A</div>
+          <div class="profile-info">
+            <h2 id="profile-name" class="profile-name">Loading…</h2>
+            <p id="profile-email" class="profile-email">—</p>
+            <p id="profile-joined" class="profile-joined">—</p>
+          </div>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span class="stat-number" id="stat-items">—</span>
+            <span class="stat-label">Items Listed</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number" id="stat-posts">—</span>
+            <span class="stat-label">Posts Shared</span>
+          </div>
+        </div>
+
+        <div class="profile-section">
+          <h3 class="section-title">My Listings</h3>
+          <div id="my-items-grid" class="items-grid compact"></div>
+          <div id="my-items-empty" class="empty-state hidden">
+            <div class="empty-icon">📦</div>
+            <p class="empty-title">No listings yet</p>
+          </div>
+        </div>
+
+        <div class="profile-section">
+          <h3 class="section-title">My Posts</h3>
+          <div id="my-posts-feed" class="posts-feed compact"></div>
+          <div id="my-posts-empty" class="empty-state hidden">
+            <div class="empty-icon">✏️</div>
+            <p class="empty-title">No posts yet</p>
+          </div>
+        </div>
+
+        <button id="logout-btn-mobile" class="btn btn-danger btn-full mt-24">Sign Out</button>
+      </div>
+
+    </main>
+
+    <!-- FAB (mobile add item) -->
+    <button class="fab" id="fab-btn" aria-label="Add item">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    </button>
+
+    <!-- Bottom Navigation (mobile) -->
+    <nav class="bottom-nav" id="bottom-nav">
+      <button class="bottom-nav-item active" data-page="marketplace">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <span>Market</span>
+      </button>
+      <button class="bottom-nav-item" data-page="advice">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        <span>Advice</span>
+      </button>
+      <button class="bottom-nav-item" data-page="profile">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span>Profile</span>
+      </button>
+    </nav>
+
+  </div>
+
+  <!-- ========= MODALS ========= -->
+
+  <!-- Add Item Modal -->
+  <div id="item-modal" class="modal-overlay hidden">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 class="modal-title" id="item-modal-title">List an Item</h2>
+        <button class="modal-close" data-close="item-modal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="edit-item-id" />
+        <div class="form-group">
+          <label class="form-label">Title *</label>
+          <input type="text" id="item-title" class="form-input" placeholder="e.g. Calculus Textbook 3rd Ed." />
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Subject</label>
+            <input type="text" id="item-subject" class="form-input" placeholder="e.g. Math" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Category</label>
+            <select id="item-category" class="form-input">
+              <option value="Books">Books</option>
+              <option value="Notes">Notes</option>
+              <option value="Equipment">Equipment</option>
+              <option value="Software">Software</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Condition</label>
+            <select id="item-condition" class="form-input">
+              <option value="New">New</option>
+              <option value="Like New">Like New</option>
+              <option value="Good">Good</option>
+              <option value="Fair">Fair</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Price (₹, leave blank = free)</label>
+            <input type="number" id="item-price" class="form-input" placeholder="0" min="0" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Location</label>
+          <input type="text" id="item-location" class="form-input" placeholder="e.g. Block A Hostel" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Status</label>
+          <select id="item-status" class="form-input">
+            <option value="available">Available</option>
+            <option value="requested">Requested</option>
+            <option value="borrowed">Borrowed</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Image</label>
+          <div class="file-upload-area" id="file-upload-area">
+            <input type="file" id="item-image" accept="image/*" class="file-input" />
+            <div class="file-upload-placeholder" id="file-upload-placeholder">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              <span>Tap to upload image</span>
+            </div>
+            <img id="image-preview" class="image-preview hidden" src="" alt="Preview" />
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-ghost" data-close="item-modal">Cancel</button>
+        <button id="save-item-btn" class="btn btn-primary">
+          <span class="btn-text">List Item</span>
+          <span class="btn-spinner hidden"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Item Detail Modal -->
+  <div id="item-detail-modal" class="modal-overlay hidden">
+    <div class="modal modal-lg">
+      <div class="modal-header">
+        <h2 class="modal-title" id="detail-title">—</h2>
+        <button class="modal-close" data-close="item-detail-modal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="detail-image-wrap">
+          <img id="detail-image" src="" alt="" class="detail-image hidden" />
+          <div id="detail-image-placeholder" class="detail-image-placeholder">📦</div>
+        </div>
+        <div class="detail-meta">
+          <div class="detail-badges">
+            <span id="detail-status-badge" class="badge"></span>
+            <span id="detail-category-badge" class="badge badge-outline"></span>
+          </div>
+          <div class="detail-price" id="detail-price">—</div>
+          <div class="detail-info-grid">
+            <div class="detail-info-item">
+              <span class="detail-info-label">Subject</span>
+              <span id="detail-subject" class="detail-info-value">—</span>
+            </div>
+            <div class="detail-info-item">
+              <span class="detail-info-label">Condition</span>
+              <span id="detail-condition" class="detail-info-value">—</span>
+            </div>
+            <div class="detail-info-item">
+              <span class="detail-info-label">Location</span>
+              <span id="detail-location" class="detail-info-value">—</span>
+            </div>
+            <div class="detail-info-item">
+              <span class="detail-info-label">Posted by</span>
+              <span id="detail-owner" class="detail-info-value">—</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer" id="detail-actions">
+        <!-- Edit/Delete shown for owner -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Post Modal -->
+  <div id="post-modal" class="modal-overlay hidden">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 class="modal-title">Share Advice</h2>
+        <button class="modal-close" data-close="post-modal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label">Category</label>
+          <select id="post-category" class="form-input">
+            <option value="Academics">Academics</option>
+            <option value="Career">Career</option>
+            <option value="Campus Life">Campus Life</option>
+            <option value="Mental Health">Mental Health</option>
+            <option value="Finance">Finance</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Your Advice *</label>
+          <textarea id="post-content" class="form-input form-textarea" placeholder="Share something helpful with fellow students…" rows="5"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-ghost" data-close="post-modal">Cancel</button>
+        <button id="save-post-btn" class="btn btn-primary">
+          <span class="btn-text">Post</span>
+          <span class="btn-spinner hidden"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/marketplace.js"></script>
+  <script src="js/advice.js"></script>
+  <script src="js/profile.js"></script>
+  <script src="js/modals.js"></script>
+  <script src="js/toast.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

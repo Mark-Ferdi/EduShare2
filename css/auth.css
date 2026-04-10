@@ -1,0 +1,83 @@
+/* ========= AUTH SCREEN ========= */
+.auth-screen {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-5);
+  background: var(--color-bg);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative background shapes */
+.auth-bg-shapes { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--green-100);
+}
+.shape-1 { width: 400px; height: 400px; top: -150px; right: -100px; opacity: 0.6; }
+.shape-2 { width: 300px; height: 300px; bottom: -80px; left: -80px; background: var(--green-200); opacity: 0.4; }
+.shape-3 { width: 200px; height: 200px; top: 40%; left: -50px; opacity: 0.3; }
+
+/* ========= AUTH CARD ========= */
+.auth-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8) var(--space-6);
+  width: 100%;
+  max-width: 420px;
+  box-shadow: var(--shadow-xl);
+  position: relative;
+  z-index: 1;
+  animation: scaleIn 0.4s ease;
+}
+
+/* Logo */
+.auth-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-8);
+  justify-content: center;
+}
+.auth-logo .logo-text {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--color-primary);
+}
+.auth-logo .logo-icon {
+  width: 48px; height: 48px;
+  border-radius: var(--radius-md);
+}
+
+/* ========= AUTH TABS ========= */
+.auth-tabs {
+  display: flex;
+  background: var(--color-bg);
+  border-radius: var(--radius-md);
+  padding: 4px;
+  margin-bottom: var(--space-6);
+  gap: 4px;
+}
+.auth-tab {
+  flex: 1;
+  padding: 10px;
+  border-radius: calc(var(--radius-md) - 2px);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  transition: all var(--transition-base);
+  min-height: 44px;
+}
+.auth-tab.active {
+  background: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: var(--shadow-xs);
+}
+
+/* ========= AUTH FORM ========= */
+.auth-form { display: none; }
+.auth-form.active { display: block; }
